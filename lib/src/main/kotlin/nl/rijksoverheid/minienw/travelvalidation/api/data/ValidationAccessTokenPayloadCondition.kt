@@ -4,12 +4,13 @@ import com.fasterxml.jackson.annotation.JsonProperty
 import com.google.gson.annotations.SerializedName
 
 /**
+ *
 * 3.8.4.3 Validation Access Token Payload Condition Structure
 * The validation condition structure is embedded in the validation access token to fulfil two things:
 * a) The validation validationservice knows the selected conditions by the validationservice provider/validation validationservice user
 * b) The wallet app can select an appropriate certificate for the user with reference to the conditions
 */
-data class ValidationAccessTokenConditionPayload
+data class ValidationAccessTokenPayloadCondition
     (
 //    /**
 //    * TODO Hex or base64?
@@ -24,23 +25,25 @@ data class ValidationAccessTokenConditionPayload
     */
     @JsonProperty("lang")
     @SerializedName("lang")
-    var language : String,
+    var lang : String,
 
     /**
+     * Family name transliterated
     * ICAO 9303 transliterated
     * For 1 and 2
     */
     @JsonProperty("fnt")
     @SerializedName("fnt")
-    var familyNameTransliterated : String?,
+    var fnt : String?,
 
     /**
+     * Given name transliterated
     * ICAO 9303 transliterated
     * For 1 and 2
     */
     @JsonProperty("gnt")
     @SerializedName("gnt")
-    var givenNameTransliterated : String?,
+    var gnt : String?,
 
     /**
     * Various formats:
@@ -49,17 +52,24 @@ data class ValidationAccessTokenConditionPayload
     */
     @JsonProperty("dob")
     @SerializedName("dob")
-    var dateOfBirth : String?,
-
-    @JsonProperty("poa")
-    @SerializedName("poa")
-    var portOfArrival : String,
-
-    @JsonProperty("pod")
-    @SerializedName("pod")
-    var portOfDeparture : String,
+    var dob : String?,
 
     /**
+     * portOfArrival
+     * */
+    @JsonProperty("poa")
+    @SerializedName("poa")
+    var poa : String,
+
+    /**
+    * portOfDeparture
+    */
+    @JsonProperty("pod")
+    @SerializedName("pod")
+    var pod : String,
+
+    /**
+     * countryOfArrival
     * ISO 3166-1 alpha-2
     * For 2
     * e.g. NL
@@ -67,36 +77,40 @@ data class ValidationAccessTokenConditionPayload
     */
     @JsonProperty("coa")
     @SerializedName("coa")
-    var countryOfArrival:String,
+    var coa:String,
 
     /**
+     * countryOfDeparture
     * ISO 3166-1 alpha-2
     * For 2
     * e.g. NL
     */
     @JsonProperty("cod")
     @SerializedName("cod")
-    var countryOfDeparture : String,
+    var cod : String,
 
     /**
+     * regionOfArrival
     * ISO 3166-2 without Country
     * For 2
     * e.g. NL
     */
     @JsonProperty("roa")
     @SerializedName("roa")
-    var regionOfArrival : String,
+    var roa : String,
 
     /**
+     * regionOfDeparture
     * ISO 3166-2 without Country
     * For 2
     * e.g. NL
     */
     @JsonProperty("rod")
     @SerializedName("rod")
-    var regionOfDeparture : String,
+    var rod : String,
 
     /**
+     * dccTypes
     * Type of DCC
     * For 0,1,2
     * Values v, t, r, tp, tr
@@ -104,9 +118,10 @@ data class ValidationAccessTokenConditionPayload
     */
     @JsonProperty("type")
     @SerializedName("type")
-    var dccTypes : Array<String>,
+    var type : Array<String>,
 
     /**
+     * categories
     * e.g. Inter-Flight, Concert, Domestic, MassEvent > 1000, etc.
     * Category which  shall be reflected in the Validation by additional rules/logic. If null, Standard Business Rule Check will apply.
     * Default: “Standard”
@@ -114,7 +129,7 @@ data class ValidationAccessTokenConditionPayload
     */
     @JsonProperty("category")
     @SerializedName("category")
-    var categories : Array<String>,
+    var category : Array<String>,
 
     /**
     * Date where the DCC must be validatable.
@@ -124,20 +139,22 @@ data class ValidationAccessTokenConditionPayload
     var validationClock : String,
 
     /**
+     * whenValidStart
     *  DCC must be valid from this date.
     * ISO8601 with time and offset e.g. 2021-01-29T12:00:00+01:00
     * For 0,1,2
     */
     @JsonProperty("validfrom")
     @SerializedName("validfrom")
-    var whenValidStart : String,
+    var validfrom : String,
 
     /**
+     * whenValidEnd
     * DCC must be valid minimum to this date.
     * ISO8601 with time and offset e.g. 2021-01-29T12:00:00+01:00
     * For 0,1,2
     */
     @JsonProperty("validTo")
     @SerializedName("validTo")
-    var whenValidEnd : String
+    var validTo : String
 )

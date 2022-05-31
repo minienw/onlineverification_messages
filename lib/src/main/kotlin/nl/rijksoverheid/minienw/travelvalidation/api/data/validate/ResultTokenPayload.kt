@@ -56,10 +56,8 @@ class ResultTokenPayload(
      * NOK = Fail
      * CHK = Cross Check(OPEN)
      */
-    @SerializedName("sub")
     var result: String, //TODO ResultTokenPayloadResult?
 
-    @SerializedName("sub")
     var results: Array<DCCFailableItem>,
 
     /**

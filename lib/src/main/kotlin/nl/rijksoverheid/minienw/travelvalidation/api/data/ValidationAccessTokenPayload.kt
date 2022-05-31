@@ -25,59 +25,62 @@ class ValidationAccessTokenPayload {
         whenExpires: Long,
         ValidationType: ValidationType,
         ValidationVersion: String,
-        ValidationCondition: ValidationAccessTokenConditionPayload,
+        ValidationCondition: ValidationAccessTokenPayloadCondition,
         whenIssued: Long
     )
     {
-        this.id = jsonTokenIdentifier
-        this.issuingServiceProvider = serviceProvider
-        this.subject = subject
-        this.validationUrl = subjectUri
-        this.whenIssued = whenIssued
-        this.whenExpires = whenExpires
-        this.validationType = ValidationType
-        this.validationVersion = ValidationVersion
-        this.validationCondition = ValidationCondition
+        this.jti = jsonTokenIdentifier
+        this.iss = serviceProvider
+        this.sub = subject
+        this.aud = subjectUri
+        this.iat = whenIssued
+        this.exp = whenExpires
+        this.t = ValidationType
+        this.v = ValidationVersion
+        this.vc = ValidationCondition
     }
 
     /**
-     *
+     * id
      */
     @NotNull
     //@Size(min = 32, max = 32)
     //@Pattern(regexp = Constants.GuidAsHexRegexPattern)
     @JsonProperty("jti")
     @SerializedName("jti")
-    var id: String
+    var jti: String
 
     /**
+     * issuingServiceProvider
      * https://serviceprovider
      * id (uri?) of identity document
      */
     //@NotBlank
     @JsonProperty("iss")
     @SerializedName("iss")
-    var issuingServiceProvider: String
+    var iss: String
 
     /**
-     * TODO of what?
+     * whenIssued
      * Unix epoch time
      */
     @Min(Constants.LowestPossibleTime)
     @JsonProperty("iat")
     @SerializedName("iat")
-    var whenIssued: Long
+    var iat: Long
 
     /**
+     * subject - airline identifier of booking/traveller
      * TODO "Value of the Initialisation"
      * e.g. ADEDDDDDDDDDDDDDDD
      */
     //@Pattern(regexp = Constants.GuidAsHexRegexPattern)
     @JsonProperty("sub")
     @SerializedName("sub")
-    var subject: String
+    var sub: String
 
     /**
+     * validationUrl
      * Value of the Initialisation (must match to validationservice endpoint “ValidationService”)
      * e.g. https://validationprovider/validate/{subject}
      * Audience
@@ -86,18 +89,20 @@ class ValidationAccessTokenPayload {
     //TODO additional Uri.parse...
     @JsonProperty("aud")
     @SerializedName("aud")
-    var validationUrl: String
+    var aud: String
 
     /**
+     * whenExpires
      * Epoch time
      */
     @Min(Constants.LowestPossibleTime)
     //TODO also max
     @JsonProperty("exp")
     @SerializedName("exp")
-    var whenExpires: Long
+    var exp: Long
 
     /**
+     * validationType
      * This is the type discriminator for the condition and governs the mandatory fields
      * NB Must be 2 for this type of validation
      * Depth of probing for the DCC during verification
@@ -105,23 +110,25 @@ class ValidationAccessTokenPayload {
     //@NotBlank //TODO regex or code?
     @JsonProperty("t")
     @SerializedName("t")
-    var validationType: ValidationType
+    var t: ValidationType
 
     /**
+     * validationVersion
      * TODO what is this used for?
      * e.g. 1.0
      */
     //@NotBlank //TODO regex or code?
     @JsonProperty("v")
     @SerializedName("v")
-    var validationVersion: String
+    var v: String
 
     /**
+     * validationCondition
      * Validation Conditions
      * (optional, depending on Type = Full)
      */
     @NotNull
     @JsonProperty("vc")
     @SerializedName("vc")
-    var validationCondition: ValidationAccessTokenConditionPayload
+    var vc: ValidationAccessTokenPayloadCondition
 }
