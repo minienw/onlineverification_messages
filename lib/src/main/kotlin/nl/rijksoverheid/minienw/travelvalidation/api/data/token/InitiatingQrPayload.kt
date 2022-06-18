@@ -6,7 +6,9 @@ import com.google.gson.annotations.SerializedName
 
 import com.fasterxml.jackson.annotation.JsonProperty
 data class InitiatingQrTokenPayload
-    (
+(
+    @JsonProperty("iss")
+    @SerializedName("iss")
     val issuer:String,
 
     @JsonProperty("iat")

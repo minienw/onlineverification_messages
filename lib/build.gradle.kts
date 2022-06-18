@@ -15,7 +15,7 @@ tasks.jar {
 }
 
 group = "nl.rijksoverheid.minienw.travelvalidation"
-version = "0.0.2-SNAPSHOT"
+version = "0.0.3-SNAPSHOT"
 java.sourceCompatibility = JavaVersion.VERSION_17
 
 dependencies {
