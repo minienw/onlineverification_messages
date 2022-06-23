@@ -2,6 +2,7 @@
 
 import com.fasterxml.jackson.annotation.JsonProperty
 import com.google.gson.annotations.SerializedName
+import io.swagger.annotations.ApiModelProperty
 import nl.rijksoverheid.minienw.travelvalidation.api.data.*
 
 /**
@@ -25,16 +26,19 @@ class VerificationMethod
 
     @JsonProperty("id")
     @SerializedName("id")
+    @ApiModelProperty(required = true, notes = "All ID values must be prefixed by {serviceproviderurl} and a fragment value, e.g. https://serviceprovider/verificationmethod#AccessTokenSigning-1. See documentation.")
     val id: String,
 
     @JsonProperty("type")
     @SerializedName("type")
+    @ApiModelProperty(required = true, notes="Always JsonWebKey2020.")
     val type: String = "JsonWebKey2020", //TODO simply this?
 
     /**
     */
     @JsonProperty("controller")
     @SerializedName("controller")
+    @ApiModelProperty(required = true, notes="...")
     val controller: String,
 
     /**
@@ -42,6 +46,7 @@ class VerificationMethod
     */
     @JsonProperty("publicKeyJwk")
     @SerializedName("publicKeyJwk")
+    @ApiModelProperty(required = true, notes="Public key in JWK format.")
     val publicKeyJwk: PublicKeyJwk?,
 
 //    /**

@@ -1,6 +1,8 @@
 package nl.rijksoverheid.minienw.travelvalidation.api.data.callback
 
-data class CallbackRequestBody (
+import io.swagger.annotations.*
 
+data class CallbackRequestBody (
+    @ApiModelProperty(required = true, notes="JWT with payload ConfirmationTokenPayload", reference = "ConfirmationTokenPayload")
     var confirmationToken: String
 )

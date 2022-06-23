@@ -2,6 +2,7 @@ package nl.rijksoverheid.minienw.travelvalidation.api.data.validate
 
 import com.fasterxml.jackson.annotation.JsonProperty
 import com.google.gson.annotations.SerializedName
+import io.swagger.annotations.ApiModelProperty
 
 class DccExtract
 (
@@ -11,6 +12,7 @@ class DccExtract
  */
 @SerializedName("fnt")
 @JsonProperty("fnt")
+@ApiModelProperty(required = true, notes="Surname value (ICAO 9303 transliterated) extracted from DCC.")
 var surnameTransliterated : String?,
 
 /**
@@ -19,6 +21,7 @@ var surnameTransliterated : String?,
  */
 @SerializedName("gnt")
 @JsonProperty("gnt")
+@ApiModelProperty(required = true, notes="Given name value (ICAO 9303 transliterated) extracted from DCC.")
 var givenNameTransliterated : String?,
 
 /**
@@ -28,5 +31,6 @@ var givenNameTransliterated : String?,
  */
 @SerializedName("dob")
 @JsonProperty("dob")
+@ApiModelProperty(required = true, notes="Date of birth value extracted from DCC e.g. 1979-04-14, 1901-08, 1950 etc.")
 var dateOfBirth : String?,
 )

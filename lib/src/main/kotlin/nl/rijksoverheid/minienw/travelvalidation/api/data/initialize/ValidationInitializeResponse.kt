@@ -2,6 +2,7 @@
 
 import com.fasterxml.jackson.annotation.JsonProperty
 import com.google.gson.annotations.SerializedName
+import io.swagger.annotations.ApiModelProperty
 import nl.rijksoverheid.minienw.travelvalidation.api.data.*
 
 /**
@@ -18,6 +19,7 @@ class ValidationInitializeResponse(
      */
     @SerializedName("sub")
     @JsonProperty("sub")
+    @ApiModelProperty(required = true, notes = "Service provider (airline) identifier for the trip/traveller. GUID formatted as hex (no hyphens).")
     var subjectId: String,
 
     /**
@@ -26,6 +28,7 @@ class ValidationInitializeResponse(
      */
     @SerializedName("exp")
     @JsonProperty("exp")
+    @ApiModelProperty(required = true, notes="Time of expiry in Unix epoch time.")
     var whenExpires: Long,
 
     /**
@@ -33,6 +36,7 @@ class ValidationInitializeResponse(
      */
     @SerializedName("aud")
     @JsonProperty("aud")
+    @ApiModelProperty(required = true, notes="Uri of the validation service extracted from the services identity document, with the subject appended e.g. https://validationprovider/validate/AAAAAAAAAABBBBBBBBBB")
     var validationUrl: String,
 
     /**
@@ -40,6 +44,7 @@ class ValidationInitializeResponse(
      */
     @SerializedName("encKey")
     @JsonProperty("encKey")
+    @ApiModelProperty(required = true, notes="Unused for some reason. See response headers.")
     var validationServiceEncryptionKey: PublicKeyJwk?,
 
     /**
@@ -48,5 +53,6 @@ class ValidationInitializeResponse(
      */
     @SerializedName("signKey")
     @JsonProperty("signKey")
+    @ApiModelProperty(required = true, notes="Unused for some reason. See response headers.")
     var signKey: PublicKeyJwk?,
 )

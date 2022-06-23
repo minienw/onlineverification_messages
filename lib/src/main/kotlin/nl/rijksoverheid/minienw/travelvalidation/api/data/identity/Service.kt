@@ -2,6 +2,7 @@
 
 import com.fasterxml.jackson.annotation.JsonProperty
 import com.google.gson.annotations.SerializedName
+import io.swagger.annotations.ApiModelProperty
 
 /**
  3.8.2.3 nl.rijksoverheid.minienw.travelvalidation.validationservice.api.data.identity.Service
@@ -23,6 +24,7 @@ class Service
     */
     @JsonProperty("id")
     @SerializedName("id")
+    @ApiModelProperty(required = true, notes = "ID of the Endpoint(must resolve to a Identity Document). All id values have to be prefixed by {serviceproviderurl} and a fragment value, e.g. https://servicepovider/validationservice#AccessCredentialService.")
     var id : String,
 
     /**
@@ -30,6 +32,7 @@ class Service
     */
     @JsonProperty("type")
     @SerializedName("type")
+    @ApiModelProperty(required = true, notes = "Value from AccessTokenService, ConfirmationService, ServiceProvider, InitializeService or ValidationService.")
     var type : String,
 
     /**
@@ -37,6 +40,7 @@ class Service
     */
     @JsonProperty("serviceEndpoint")
     @SerializedName("serviceEndpoint")
+    @ApiModelProperty(required = true, notes = "Actual URI of endpoint.")
     var serviceEndpoint : String,
 
     /**
@@ -44,5 +48,6 @@ class Service
     */
     @JsonProperty("name")
     @SerializedName("name")
+    @ApiModelProperty(required = true, notes="'Human-readable' name of service.")
     var name : String?,
 )

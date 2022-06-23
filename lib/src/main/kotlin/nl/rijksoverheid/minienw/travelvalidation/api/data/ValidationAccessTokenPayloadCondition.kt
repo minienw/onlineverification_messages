@@ -2,6 +2,7 @@
 
 import com.fasterxml.jackson.annotation.JsonProperty
 import com.google.gson.annotations.SerializedName
+import io.swagger.annotations.ApiModelProperty
 
 /**
  *
@@ -25,6 +26,7 @@ data class ValidationAccessTokenPayloadCondition
     */
     @JsonProperty("lang")
     @SerializedName("lang")
+    @ApiModelProperty(required = true, notes="Display language to use in wallet. Currently ignored by wallet. Use ISO 639-1 standard language codes?")
     var lang : String,
 
     /**
@@ -34,6 +36,7 @@ data class ValidationAccessTokenPayloadCondition
     */
     @JsonProperty("fnt")
     @SerializedName("fnt")
+    @ApiModelProperty(required = false, notes="Unused. Remove.")
     var fnt : String?,
 
     /**
@@ -43,6 +46,7 @@ data class ValidationAccessTokenPayloadCondition
     */
     @JsonProperty("gnt")
     @SerializedName("gnt")
+    @ApiModelProperty(required = false, notes="Unused. Remove.")
     var gnt : String?,
 
     /**
@@ -52,6 +56,7 @@ data class ValidationAccessTokenPayloadCondition
     */
     @JsonProperty("dob")
     @SerializedName("dob")
+    @ApiModelProperty(required = false, notes="Unused. Remove.")
     var dob : String?,
 
     /**
@@ -59,6 +64,7 @@ data class ValidationAccessTokenPayloadCondition
      * */
     @JsonProperty("poa")
     @SerializedName("poa")
+    @ApiModelProperty(required = true, notes="Port of arrival - which standard?")
     var poa : String,
 
     /**
@@ -66,6 +72,7 @@ data class ValidationAccessTokenPayloadCondition
     */
     @JsonProperty("pod")
     @SerializedName("pod")
+    @ApiModelProperty(required = true, notes="Port of departure - which standard?")
     var pod : String,
 
     /**
@@ -77,6 +84,7 @@ data class ValidationAccessTokenPayloadCondition
     */
     @JsonProperty("coa")
     @SerializedName("coa")
+    @ApiModelProperty(required = true, notes="Country of arrival - ISO 3166-1 alpha-2 e.g. NL")
     var coa:String,
 
     /**
@@ -87,6 +95,7 @@ data class ValidationAccessTokenPayloadCondition
     */
     @JsonProperty("cod")
     @SerializedName("cod")
+    @ApiModelProperty(required = true, notes="Country of departure - ISO 3166-1 alpha-2 e.g. NL")
     var cod : String,
 
     /**
@@ -97,6 +106,7 @@ data class ValidationAccessTokenPayloadCondition
     */
     @JsonProperty("roa")
     @SerializedName("roa")
+    @ApiModelProperty(required = true, notes="Country of arrival - ISO 3166-2 without country.")
     var roa : String,
 
     /**
@@ -107,6 +117,7 @@ data class ValidationAccessTokenPayloadCondition
     */
     @JsonProperty("rod")
     @SerializedName("rod")
+    @ApiModelProperty(required = true, notes="Country of departure - ISO 3166-2 without country.")
     var rod : String,
 
     /**
@@ -118,6 +129,7 @@ data class ValidationAccessTokenPayloadCondition
     */
     @JsonProperty("type")
     @SerializedName("type")
+    @ApiModelProperty(required = true, notes="TBD. Unused?")
     var type : Array<String>,
 
     /**
@@ -129,6 +141,7 @@ data class ValidationAccessTokenPayloadCondition
     */
     @JsonProperty("category")
     @SerializedName("category")
+    @ApiModelProperty(required = true, notes = "e.g. Inter-Flight, Concert, Domestic, MassEvent > 1000, etc. Category which shall be reflected in the validation by additional rules/logic. If null, Standard Business Rule Check will apply. Default: Standard", example = "Standard")
     var category : Array<String>,
 
     /**
@@ -136,6 +149,7 @@ data class ValidationAccessTokenPayloadCondition
     * ISO8601 with time and offset e.g. 2021-01-29T12:00:00+01:00
     * For 1,2
     */
+    @ApiModelProperty(required = true, notes = "Date where the DCC must be validatable. ISO8601 with time and offset e.g. 2021-01-29T12:00:00+01:00.")
     var validationClock : String,
 
     /**
@@ -146,6 +160,7 @@ data class ValidationAccessTokenPayloadCondition
     */
     @JsonProperty("validfrom")
     @SerializedName("validfrom")
+    @ApiModelProperty(required = true,notes="DCC must be valid from this date. ISO8601 with time and offset e.g. 2021-01-29T12:00:00+01:00.")
     var validfrom : String,
 
     /**
@@ -156,5 +171,6 @@ data class ValidationAccessTokenPayloadCondition
     */
     @JsonProperty("validTo")
     @SerializedName("validTo")
+    @ApiModelProperty(required = true,notes="DCC must be valid up to this date. ISO8601 with time and offset e.g. 2021-01-29T12:00:00+01:00.")
     var validTo : String
 )

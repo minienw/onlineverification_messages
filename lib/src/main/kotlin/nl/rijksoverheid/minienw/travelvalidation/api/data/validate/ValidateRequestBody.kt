@@ -2,6 +2,7 @@
 
 import com.fasterxml.jackson.annotation.JsonProperty
 import com.google.gson.annotations.SerializedName
+import io.swagger.annotations.ApiModelProperty
 
 /**
 * 3.10.2.4.4 Request Body
@@ -15,15 +16,16 @@ class ValidateRequestBody
     */
     @SerializedName("kid")
     @JsonProperty("kid")
+    @ApiModelProperty(required = true, notes="Kid of the RSA public key used to encrypt the AES secret key used to encrypt the DCC artefact.")
     var encryptionKeyId : String,
 
     /**
     * Encrypted with var key from <see cref="EncryptionKeyId"/>
     * Encrypted DCC according to encScheme.Input is the HCert base45 string.
-    * Base64 encoded - BEWARE DOUBLE ENCODING/DECODING
     */
     @SerializedName("dcc")
     @JsonProperty("dcc")
+    @ApiModelProperty(required = true, notes = "Base 64 of the AES encrypted DCC artefact.")
     var encryptedDcc : String,
 
     /**
@@ -34,19 +36,21 @@ class ValidateRequestBody
     */
     @SerializedName("sig")
     @JsonProperty("sig")
+    @ApiModelProperty(required = true, notes="Base64 of the digest of the encrypted DCC.")
     var encryptedDccSignature : String?,
 
     /**
     * Used Signature Algorithm
     * e.g. SHA256withECDSA
-     * TODO repetative
     */
     @SerializedName("sigAlg")
     @JsonProperty("sigAlg")
+    @ApiModelProperty(required = true, notes="Digest algorithm identifier, currently always 'SHA256withECDSA'")
     var encryptedDccSignatureAlgorithm : String?,
 
     @SerializedName("encScheme")
     @JsonProperty("encScheme")
+    @ApiModelProperty(required = true, notes="Encryption scheme used on the DCC artefact - currently only 'RsaOaepWithSha256AesCbcScheme'")
     var encryptedScheme : String,
 
     /**
@@ -55,5 +59,6 @@ class ValidateRequestBody
     */
     @SerializedName("encKey")
     @JsonProperty("encKey")
+    @ApiModelProperty(required = true, notes="Unused.")
     var encryptionKey : String?,
 )

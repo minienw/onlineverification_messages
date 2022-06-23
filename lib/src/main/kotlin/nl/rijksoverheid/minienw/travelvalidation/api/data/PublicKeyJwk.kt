@@ -2,23 +2,28 @@ package nl.rijksoverheid.minienw.travelvalidation.api.data
 
 import com.fasterxml.jackson.annotation.JsonProperty
 import com.google.gson.annotations.SerializedName
+import io.swagger.annotations.ApiModelProperty
 import javax.validation.constraints.NotNull
 
 data class PublicKeyJwk(
     @JsonProperty("x5c")
     @SerializedName("x5c")
+    @ApiModelProperty(required = true)
     val x5c: Array<String>,
 
     @JsonProperty("kid")
     @SerializedName("kid")
+    @ApiModelProperty(required = true)
     val kid: String,
 
     @JsonProperty("alg")
     @SerializedName("alg")
+    @ApiModelProperty(required = true)
     val alg: String,
 
     @JsonProperty("use")
     @SerializedName("use")
+    @ApiModelProperty(required = true)
     val use: String
 )
 

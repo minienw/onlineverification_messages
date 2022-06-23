@@ -3,6 +3,7 @@
 import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonProperty
 import com.google.gson.annotations.SerializedName
+import io.swagger.annotations.ApiModelProperty
 import nl.rijksoverheid.minienw.travelvalidation.Constants
 import nl.rijksoverheid.minienw.travelvalidation.api.data.token.ValidationType
 import javax.validation.constraints.Min
@@ -48,6 +49,7 @@ class ValidationAccessTokenPayload {
     //@Pattern(regexp = Constants.GuidAsHexRegexPattern)
     @JsonProperty("jti")
     @SerializedName("jti")
+    @ApiModelProperty(required = true, notes="")
     var jti: String
 
     /**
@@ -58,6 +60,7 @@ class ValidationAccessTokenPayload {
     //@NotBlank
     @JsonProperty("iss")
     @SerializedName("iss")
+    @ApiModelProperty(required = true, notes="Uri of the identity document of the issuing service.")
     var iss: String
 
     /**
@@ -67,6 +70,7 @@ class ValidationAccessTokenPayload {
     @Min(Constants.LowestPossibleTime)
     @JsonProperty("iat")
     @SerializedName("iat")
+    @ApiModelProperty(required = true, notes="Time of issue in Unix epoch time.")
     var iat: Long
 
     /**
@@ -77,6 +81,7 @@ class ValidationAccessTokenPayload {
     //@Pattern(regexp = Constants.GuidAsHexRegexPattern)
     @JsonProperty("sub")
     @SerializedName("sub")
+    @ApiModelProperty(required = true, notes = "Service provider (airline) identifier for the trip/traveller. GUID formatted as hex (no hyphens).")
     var sub: String
 
     /**
@@ -89,6 +94,7 @@ class ValidationAccessTokenPayload {
     //TODO additional Uri.parse...
     @JsonProperty("aud")
     @SerializedName("aud")
+    @ApiModelProperty(required = true, notes="Uri of the validation service extracted from the services identity document, with the subject appended e.g. https://validationprovider/validate/AAAAAAAAAABBBBBBBBBB")
     var aud: String
 
     /**
@@ -99,6 +105,7 @@ class ValidationAccessTokenPayload {
     //TODO also max
     @JsonProperty("exp")
     @SerializedName("exp")
+    @ApiModelProperty(required = true, notes="Time of expiry in Unix epoch time.")
     var exp: Long
 
     /**
@@ -110,6 +117,7 @@ class ValidationAccessTokenPayload {
     //@NotBlank //TODO regex or code?
     @JsonProperty("t")
     @SerializedName("t")
+    @ApiModelProperty(required = true, notes="Always 2.")
     var t: ValidationType
 
     /**
@@ -120,6 +128,7 @@ class ValidationAccessTokenPayload {
     //@NotBlank //TODO regex or code?
     @JsonProperty("v")
     @SerializedName("v")
+    @ApiModelProperty(required = true, notes = "TBD. Reflect the protocol version? e.g. 2.00.")
     var v: String
 
     /**
@@ -130,5 +139,6 @@ class ValidationAccessTokenPayload {
     @NotNull
     @JsonProperty("vc")
     @SerializedName("vc")
+    @ApiModelProperty(required = true, notes="TDB...")
     var vc: ValidationAccessTokenPayloadCondition
 }

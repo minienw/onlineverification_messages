@@ -1,11 +1,19 @@
 package nl.rijksoverheid.minienw.travelvalidation.api.data.validate
 
+import io.swagger.annotations.ApiModelProperty
+
 class DCCFailableItem(
+    @ApiModelProperty(required = true)
     val type: DCCFailableType,
+    @ApiModelProperty()
     val param1: Int? = null,
+    @ApiModelProperty()
     val param2: Int? = null,
+    @ApiModelProperty()
     val param3: Int? = null,
+    @ApiModelProperty()
     val customMessage: String? = null,
+    @ApiModelProperty()
     val ruleIdentifier: String? = null
 ) {
 
