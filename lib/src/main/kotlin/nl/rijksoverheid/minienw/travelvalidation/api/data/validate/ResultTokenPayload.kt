@@ -69,12 +69,12 @@ class ResultTokenPayload(
     /**
      * The one to send to the airline
      */
-    @ApiModelProperty(required = true, notes="JWT of ConfirmationTokenPayload - The one to send to the airline.")
+    @ApiModelProperty(required = false, notes="JWT of ConfirmationTokenPayload - The one to send to the airline.")
     var confirmation: String?,
 
     // V2 Extra
     @SerializedName("personalinfodccextract")
     @JsonProperty("personalinfodccextract")
-    @ApiModelProperty(required = true, notes="Names and date of birth extracted from the DCC.")
+    @ApiModelProperty(required = false, notes="Names and date of birth extracted from the DCC.")
     var dccExtract: DccExtract?
 )

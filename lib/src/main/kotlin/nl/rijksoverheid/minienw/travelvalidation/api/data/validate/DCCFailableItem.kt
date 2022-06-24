@@ -1,19 +1,21 @@
 package nl.rijksoverheid.minienw.travelvalidation.api.data.validate
 
+import io.swagger.annotations.ApiModel
 import io.swagger.annotations.ApiModelProperty
 
+@ApiModel
 class DCCFailableItem(
     @ApiModelProperty(required = true)
     val type: DCCFailableType,
-    @ApiModelProperty()
+    @ApiModelProperty(required = false)
     val param1: Int? = null,
-    @ApiModelProperty()
+    @ApiModelProperty(required = false)
     val param2: Int? = null,
-    @ApiModelProperty()
+    @ApiModelProperty(required = false)
     val param3: Int? = null,
-    @ApiModelProperty()
+    @ApiModelProperty(required = false)
     val customMessage: String? = null,
-    @ApiModelProperty()
+    @ApiModelProperty(required = false)
     val ruleIdentifier: String? = null
 ) {
 
@@ -53,32 +55,60 @@ class DCCFailableItem(
     }
 }
 
+@ApiModel
 enum class DCCFailableType {
+    @ApiModelProperty
     MissingRequiredTest,
+    @ApiModelProperty
     TestDateExpired,
+    @ApiModelProperty
     TestMustBeNegative,
+    @ApiModelProperty
     RedNotAllowed,
+    @ApiModelProperty
     NeedFullVaccination,
+    @ApiModelProperty
     RecoveryNotValid,
+    @ApiModelProperty
     RequireSecondTest,
+    @ApiModelProperty
     InvalidTestResult,
+    @ApiModelProperty
     InvalidTestType,
+    @ApiModelProperty
     InvalidTargetDisease,
+    @ApiModelProperty
     InvalidVaccineHolder,
+    @ApiModelProperty
     InvalidVaccineType,
+    @ApiModelProperty
     InvalidVaccineProduct,
+    @ApiModelProperty
     DateOfBirthOutOfRange,
+    @ApiModelProperty
     InvalidCountryCode,
+    @ApiModelProperty
     InvalidDateOfBirth,
+    @ApiModelProperty
     InvalidVaccineDate,
+    @ApiModelProperty
     InvalidTestDate,
+    @ApiModelProperty
     InvalidRecoveryFirstTestDate,
+    @ApiModelProperty
     InvalidRecoveryFromDate,
+    @ApiModelProperty
     InvalidRecoveryToDate,
+    @ApiModelProperty
     InvalidVaccine14Days,
+    @ApiModelProperty
     UndecidableFrom,
+    @ApiModelProperty
     CustomFailure,
+    @ApiModelProperty
     VocRequireSecondAntigen,
+    @ApiModelProperty
     VocRequireSecondPCR,
+    @ApiModelProperty
     VocRequirePCROrAntigen
 }

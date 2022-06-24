@@ -30,36 +30,6 @@ data class ValidationAccessTokenPayloadCondition
     var lang : String,
 
     /**
-     * Family name transliterated
-    * ICAO 9303 transliterated
-    * For 1 and 2
-    */
-    @JsonProperty("fnt")
-    @SerializedName("fnt")
-    @ApiModelProperty(required = false, notes="Unused. Remove.")
-    var fnt : String?,
-
-    /**
-     * Given name transliterated
-    * ICAO 9303 transliterated
-    * For 1 and 2
-    */
-    @JsonProperty("gnt")
-    @SerializedName("gnt")
-    @ApiModelProperty(required = false, notes="Unused. Remove.")
-    var gnt : String?,
-
-    /**
-    * Various formats:
-    * 1979-04-14 or 1901-08 or 1950
-    * For 1 and 2
-    */
-    @JsonProperty("dob")
-    @SerializedName("dob")
-    @ApiModelProperty(required = false, notes="Unused. Remove.")
-    var dob : String?,
-
-    /**
      * portOfArrival
      * */
     @JsonProperty("poa")
